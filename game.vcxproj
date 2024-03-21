@@ -236,6 +236,7 @@
     <None Include="Resources\GAME.RC2" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Raiden.cpp" />
     <ClCompile Include="Source\Core\game.cpp" />
     <ClCompile Include="Source\Core\gameDoc.cpp" />
     <ClCompile Include="Source\Core\gameView.cpp" />
@@ -251,6 +252,7 @@
     <ClCompile Include="Source\Library\gameutil.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Raiden.h" />
     <ClInclude Include="Source\Core\Game.h" />
     <ClInclude Include="Source\Core\gameDoc.h" />
     <ClInclude Include="Source\Core\gameView.h" />

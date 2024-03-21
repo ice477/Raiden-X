@@ -65,7 +65,11 @@ namespace game_framework {
 	protected:
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		CMovingBitmap logo;								// csie的logo
+		int phase = 1;
+		CMovingBitmap logo;								// csie的logo	
+		CMovingBitmap menu;
+		void show_homepage();
+		void phase_execution();
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -89,6 +93,24 @@ namespace game_framework {
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
+	private:
+		int stage;
+
+		bool isMovingUp = false;
+		bool isMovingLeft = false;
+		bool isMovingDown = false;
+		bool isMovingRight = false;
+		bool isPause = false;
+		bool playerAttack = false;
+
+		CMovingBitmap background;
+		CMovingBitmap raiden;
+		CMovingBitmap spark;
+
+		void Background_Scroll();
+		bool isBoss();
+		void PlayerIsAttack();
+		void ClearAttack();
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
