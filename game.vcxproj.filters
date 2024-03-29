@@ -57,9 +57,6 @@
     <ClCompile Include="Source\Game\mygame_run.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
-    <ClCompile Include="Raiden.cpp">
-      <Filter>MyGame</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Library\audio.h">
@@ -93,9 +90,6 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\config.h">
-      <Filter>MyGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Raiden.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>

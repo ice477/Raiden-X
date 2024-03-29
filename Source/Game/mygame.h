@@ -37,7 +37,9 @@
  *      2. Replace the demonstration of animation as a new bouncing ball.
  *      3. Use ShowInitProgress(percent) to display loading progress.
 */
+#include <vector>
 
+#include <fstream>
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -90,27 +92,46 @@ namespace game_framework {
 		void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
 		void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 		void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
+
+		
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		int stage;
-
+		int bulletlevel;
+		
 		bool isMovingUp = false;
 		bool isMovingLeft = false;
 		bool isMovingDown = false;
 		bool isMovingRight = false;
 		bool isPause = false;
 		bool playerAttack = false;
+		bool enemyCreated = false;
+		bool waitingForEnemy = false;
 
 		CMovingBitmap background;
 		CMovingBitmap raiden;
 		CMovingBitmap spark;
 
+		CMovingBitmap bullet;
+
+		CMovingBitmap flyer;
+		CMovingBitmap bomber;
+		CMovingBitmap vtank;
+		CMovingBitmap htank;
+		CMovingBitmap gtank;
+		CMovingBitmap tank3;
+
+
 		void Background_Scroll();
 		bool isBoss();
 		void PlayerIsAttack();
 		void ClearAttack();
+		void GameOver();
+		void BulletChoose();
+
+		
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
