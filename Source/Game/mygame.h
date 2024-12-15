@@ -109,12 +109,44 @@ namespace game_framework {
 		bool playerAttack = false;
 		bool enemyCreated = false;
 		bool waitingForEnemy = false;
+		bool animated = false;
 
 		CMovingBitmap background;
 		CMovingBitmap raiden;
 		CMovingBitmap spark;
 
-		CMovingBitmap bullet;
+		CMovingBitmap pbullet;
+		std::vector<CMovingBitmap> pbullets;
+
+		CMovingBitmap ebullet;
+		std::vector<CMovingBitmap> ebullets;
+
+		DWORD lastBulletTime = 0;
+
+		std::vector<CMovingBitmap> enemies; // 敵機向量
+		std::vector<DWORD> enemyStartTime; // 追蹤每個敵機開始行動的時間
+		std::vector<size_t> enemiesToRemove;
+		
+		enum EnemyType {
+			Flyer,
+			Bomber
+		};
+
+		struct EnemyInfo {
+			EnemyType type;        // 敵機類型
+			CMovingBitmap bitmap;  // 敵機圖像
+			bool active;           // 敵機是否活動中
+			bool hit;              // 敵機是否被擊中
+			int size;              // 敵機的大小，用於碰撞檢測
+			int targetX;
+			int targetY;
+			int HP;
+		};
+		std::vector<EnemyInfo> enemiesInfo;
+
+		double Distance(int x1, int y1, int x2, int y2) {
+			return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+		}
 
 		CMovingBitmap flyer;
 		CMovingBitmap bomber;
@@ -123,15 +155,21 @@ namespace game_framework {
 		CMovingBitmap gtank;
 		CMovingBitmap tank3;
 
-
 		void Background_Scroll();
 		bool isBoss();
 		void PlayerIsAttack();
 		void ClearAttack();
 		void GameOver();
-		void BulletChoose();
+		void CreateEnemy(EnemyType type, int x, int y);
+		void EnemyHit(size_t enemyIndex);
 
-		
+		void UpdateEnemies();
+		void UpdateEnemiesPosition();
+		void MoveFlyer(EnemyInfo& enemy);
+		void MoveBomber(EnemyInfo& enemy);
+
+		void ShootBullet(EnemyInfo& enemy);
+		void UpdateEnemyBullets();
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
